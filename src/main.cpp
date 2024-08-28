@@ -1,46 +1,21 @@
 #include <iostream>
+
+#include "../inc/AbstractFactory.h"
+#include "../inc/UserFactory.cpp"
 using namespace std;
 
 #include "../inc/OASystemUI.h"
 
-/*
- * 项目名称：《OA系统会议室预定》
- *
- * 项目描述：
- *			这是办公场中非常常见的场景，我们需要找到一个会议室使用的时候，需要在OA平台上预定会议室。
- * 实现目标：
- *      管理员：
- *          1、添加用户
- *          2、删除用户
- *          3、添加会议室
- *          4、删除会议室
- *          5、重置会议室预定
- *
- *      用户：
- *          1、预定会议室
- *          2、查看自己的预定
- *          3、取消预定的会议室
- *
- * 设计类：
- *      管理员类：
- *          属性：用户名、密码
- *          功能：添加用户、删除用户、添加会议室、删除会议室
- *      用户：
- *          属性：用户名、密码、部门
- *          功能：预定会议室、查看自己的预定、取消预定的会议室
- *      会议室类：
- *          属性：会议室编号、会议室容量、会议室状态
- *      预定信息：
- *          属性：预定编号、会议室编号、用户所属部门、用户、预定时间
- *
- *
- * 需求分析：
- *
- */
-
 int main()
 {
-    OASystemUI::displayMainPage();
+    //OASystemUI::displayMainPage();
+    AbstractFactory *userFactory = new UserFactory();
+    User * admin = userFactory->createAdminFactory();
+    cout << "权限：" << admin->getPermission() << endl;
 
+    User * commonUser = userFactory->createCommonUserFactory();
+    cout << "权限：" << commonUser->getPermission() << endl;
+
+    delete userFactory;
     return EXIT_SUCCESS;
 }

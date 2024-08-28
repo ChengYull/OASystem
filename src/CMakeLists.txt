@@ -8,4 +8,14 @@ add_executable(OASystem
         ../inc/OASystemUI.h
         ../inc/OAUtils.h
         OASystemUI.cpp
-        main.cpp)
+        main.cpp
+        ../inc/User.h
+        ../inc/CommonUser.h
+        ../inc/User.cpp
+        ../inc/Admin.h
+        ../inc/CommonUser.cpp
+        ../inc/Admin.cpp
+        ../inc/AbstractFactory.h
+        ../inc/UserFactory.h
+        ../inc/UserFactory.cpp
+)
