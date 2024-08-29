@@ -14,10 +14,8 @@ public:
     string username;
     string password;
     int permission;
-
-    User() = default;
-
-    User(int id,string username,string password);
+    int departmentId;
+    User();
 
     virtual ~User();
     bool login(string username,string password);

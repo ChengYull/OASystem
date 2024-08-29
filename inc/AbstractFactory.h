@@ -10,6 +10,10 @@ public:
     virtual ~AbstractFactory() {};
 
     virtual User* createCommonUserFactory() = 0;
+    virtual User* createCommonUserFactory(int id,string username,string password,
+                                        int permission,int dptId) = 0;
     virtual User* createAdminFactory() = 0;
+    virtual User* createAdminFactory(int id,string username,string password,
+                                        int permission,int dptId) = 0;
 };
 #endif //ABSTRACTFACTORY_H

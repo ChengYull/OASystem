@@ -12,7 +12,9 @@ class CommonUser:public User{
 
 public:
     CommonUser();
+    CommonUser(int id, string username, string password,int perm,int dptId);
     string getPermission() override;
+    string getDepartment();
 };
 
 

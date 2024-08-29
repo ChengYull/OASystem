@@ -10,12 +10,22 @@
 #include "CommonUser.h"
 
 class UserFactory:public AbstractFactory {
-    User* createAdminFactory() override {
-        return new Admin();
-    }
     User* createCommonUserFactory() override{
         return new CommonUser();
     }
+    User* createCommonUserFactory(int id,string username,string password,
+                                            int permission,int dptId) override {
+        return new CommonUser(id,username,password,permission,dptId);
+    }
+    User* createAdminFactory() override {
+        return new Admin();
+    }
+    User* createAdminFactory(int id,string username,string password,
+                                            int permission,int dptId) override {
+        return new Admin(id,username,password,permission,dptId);
+    }
+
+
 };
 
 #endif //USERFACTORY_H

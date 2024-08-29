@@ -5,16 +5,17 @@
 
 #include "OAUtils.h"
 
-User::User(int id, string username, string password)
-        :id(id),username(username),password(password) {}
+User::User() {
+        this->departmentId = -1;
+}
 
 User::~User() {}
 
 bool User::login(string username,string password) {
         // 密码加密
         password = OAUtils::hashPassword(password);
-        if(username.compare(this->username)
-                && password.compare(this->password)) {
+        if(username.compare(this->username) == 0
+                && password.compare(this->password) == 0) {
                 return true;
         }
         return false;
