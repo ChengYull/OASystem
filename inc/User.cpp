@@ -11,14 +11,10 @@ User::User() {
 
 User::~User() {}
 
-bool User::login(string username,string password) {
+bool User::login(string password) {
         // 密码加密
         password = OAUtils::hashPassword(password);
-        if(username.compare(this->username) == 0
-                && password.compare(this->password) == 0) {
-                return true;
-        }
-        return false;
+        return password.compare(this->password) == 0;
 }
 
 

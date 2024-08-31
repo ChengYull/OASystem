@@ -1,6 +1,11 @@
 #pragma once
+#include "../inc/UserUtils.h"
+
 class OASystemUI
 {
 public:
-    static void displayMainPage();
+    OASystemUI();
+    UserUtils *utils;
+    void displayMainPage();
+    void loginPage();
 };

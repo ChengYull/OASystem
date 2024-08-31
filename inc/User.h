@@ -18,9 +18,9 @@ public:
     User();
 
     virtual ~User();
-    bool login(string username,string password);
+    bool login(string password);
     virtual string getPermission() = 0;
-
+    virtual void display() = 0;
 };
 
 

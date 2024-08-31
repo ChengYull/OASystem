@@ -3,7 +3,7 @@
 //
 
 #include "CommonUser.h"
-
+#include "iostream"
 #include "OAUtils.h"
 
 CommonUser::CommonUser() {
@@ -34,4 +34,9 @@ string CommonUser::getDepartment() {
             return "未定义部门";
     }
 }
-
+void CommonUser::display() {
+    cout << this->id << '\t'
+        << this->username << '\t'
+        << this->getPermission() <<  '\t'
+        << this->getDepartment() << '\t'<< endl;
+}

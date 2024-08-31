@@ -8,8 +8,12 @@
 #include "../inc/UserFactory.h"
 using namespace std;
 
-string USER_SAVE_PATH = "../../data/user.txt";
 
+
+/**
+ * 保证输入的是数字而非其他
+ * @return 输出的数字
+ */
 int OAUtils::inputNumber()
 {
     int choice = -1;
@@ -38,60 +42,21 @@ string OAUtils::hashPassword(string password) {
     return std::to_string(hash);
 }
 
-
-
-AbstractFactory* OAUtils::userFactory = new UserFactory();
-OAUtils::~OAUtils() {
-    delete userFactory;
+/**
+ * 解析一行读出的数据为单个子字符串列表
+ * @param line 文件中读出的一行数据以空格分隔
+ * @return 返回空格分隔的每个子字符串
+ */
+vector<string> OAUtils::parseLine(string line) {
+    vector<string> lineInfo;
+    string tmp;
+    stringstream ss;
+    ss << line;
+    int count = 0;
+    while(getline(ss,tmp,' ')) {
+        lineInfo.push_back(tmp);
+    }
+    return lineInfo;
 }
 
-bool OAUtils::saveUserToFile(User *user) {
-    ofstream ofs(USER_SAVE_PATH,ios::out|ios::app);
-    if(!ofs.is_open()) {
-        cout << "文件打开失败！" << endl;
-        return false;
-    }
-    ofs << user->id << " " << user->username << " "
-            << hashPassword(user->password) << " " << user->permission << " "
-            << user->departmentId << endl;
-    ofs.close();
-    return true;
-}
 
-bool OAUtils::readFileToUserList(vector<User *> &userList) {
-    ifstream ifs(USER_SAVE_PATH,ios::in);
-    if(!ifs.is_open()) {
-        cout << "文件打开失败！" << endl;
-        return false;
-    }
-    string lineBuffer,tmp;
-
-    vector<string> userInfo;
-    while(getline(ifs,lineBuffer)) {
-        stringstream ss;
-        ss << lineBuffer;
-        int count = 0;
-        while(getline(ss,tmp,' ')) {
-            userInfo.push_back(tmp);
-            count ++;
-        }
-        int id = stoi(userInfo[0]);
-        string username = userInfo[1];
-        string password = userInfo[2];
-        int permission = stoi(userInfo[3]);
-        int dptId = stoi(userInfo[4]);
-        User * user;
-
-        if(permission == 1) {
-            user = userFactory->createAdminFactory(id,username,password,
-                                                        permission,dptId);
-        }else {
-            user = userFactory->createCommonUserFactory(id,username,password,
-                                                        permission,dptId);
-        }
-        userList.push_back(user);
-        userInfo.clear();
-    }
-    ifs.close();
-    return true;
-}

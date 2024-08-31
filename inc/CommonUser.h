@@ -15,6 +15,7 @@ public:
     CommonUser(int id, string username, string password,int perm,int dptId);
     string getPermission() override;
     string getDepartment();
+    void display() override;
 };
 
 

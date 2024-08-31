@@ -14,6 +14,7 @@ public:
 
     Admin(int id, string username, string password,int perm,int dptId);
     string getPermission() override;
+    void display() override;
 };
 
 #endif //ADMIN_H
