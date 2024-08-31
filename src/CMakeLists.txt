@@ -18,4 +18,6 @@ add_executable(OASystem
         ../inc/AbstractFactory.h
         ../inc/UserFactory.h
         ../inc/UserFactory.cpp
+        ../inc/UserUtils.cpp
+        ../inc/UserUtils.h
 )
