@@ -43,6 +43,12 @@ bool UserUtils::saveUserToFile(User *user) {
     ofs.close();
     return true;
 }
+
+bool UserUtils::addUser(User *user) {
+    this->bufferUserList.push_back(user);
+    return saveUserToFile(user);
+}
+
 /**
  * 读取用户文件数据输出为用户列表
  * @param userList 存储读出的用户列表
@@ -146,6 +152,18 @@ User* UserUtils::login(string username,string password) {
     }else {
         cout << "用户名不存在" << endl;
         return nullptr;
+    }
+}
+
+void UserUtils::showUserTable() {
+    if(bufferUserList.size() > 0) {
+        cout << "id" << "\t"
+            << "用户名" << "\t"
+            << "权限" << "\t"
+            << "部门" << endl;
+        for(User* user:bufferUserList) {
+            user->display();
+        }
     }
 }
 

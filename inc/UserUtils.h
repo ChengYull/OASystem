@@ -19,11 +19,13 @@ public:
     ~UserUtils();
 
     bool saveUserToFile(User *user);
+    bool addUser(User* user);
     vector<User*> readFileToUserList();
     bool updateUserFile();
     vector<User*>::iterator getIterByUsername(string username);
     bool deleteUserByUsername(string username);
     User* login(string username,string password);
+    void showUserTable();
 };
 
 

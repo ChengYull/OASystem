@@ -20,4 +20,8 @@ add_executable(OASystem
         ../inc/UserFactory.cpp
         ../inc/UserUtils.cpp
         ../inc/UserUtils.h
+        ../inc/MeetingRoom.cpp
+        ../inc/MeetingRoom.h
+        ../inc/MeetingRoomUtils.cpp
+        ../inc/MeetingRoomUtils.h
 )
