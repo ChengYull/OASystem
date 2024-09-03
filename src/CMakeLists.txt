@@ -24,4 +24,8 @@ add_executable(OASystem
         ../inc/MeetingRoom.h
         ../inc/MeetingRoomUtils.cpp
         ../inc/MeetingRoomUtils.h
+        ../inc/BookingInfo.cpp
+        ../inc/BookingInfo.h
+        ../inc/BookingInfoUtils.cpp
+        ../inc/BookingInfoUtils.h
 )

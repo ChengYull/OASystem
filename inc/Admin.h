@@ -11,7 +11,6 @@ class Admin:public User {
 
 public:
     Admin();
-
     Admin(int id, string username, string password,int perm,int dptId);
     string getPermission() override;
     void display() override;

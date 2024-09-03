@@ -1,6 +1,7 @@
 #include <iostream>
 
 
+#include "../inc/BookingInfoUtils.h"
 #include "../inc/MeetingRoomUtils.h"
 #include "../inc/OASystemUI.h"
 using namespace std;
@@ -10,13 +11,12 @@ int main()
 {
     //OASystemUI *OAUI = new OASystemUI();
     //OAUI->displayMainPage();
-    MeetingRoom * room = new MeetingRoom(703,60,3);
 
-    MeetingRoomUtils *util = new MeetingRoomUtils();
-    //util->addMeetingRoom(room);
-    if(!util->deleteMeetingRoomById(705)) {
-        cout << "删除失败" <<endl;
-    }
-    util->showMeetingRoomTable();
+    BookingInfoUtils *utils = new BookingInfoUtils();
+    BookingInfo *info = new BookingInfo(90,702,"user3","材料部");
+    //utils->addBookingInfo(info);
+    utils->deleteBookingInfo(93);
+    utils->showBookingInfoTable(utils->bookingInfoList);
+
     return EXIT_SUCCESS;
 }
