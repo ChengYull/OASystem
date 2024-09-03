@@ -36,7 +36,7 @@ string CommonUser::getDepartment() {
 }
 void CommonUser::display() {
     cout << this->id << '\t'
-        << this->username << '\t'
-        << this->getPermission() <<  '\t'
-        << this->getDepartment() << '\t'<< endl;
+        << this->username << "\t"
+        << this->getPermission() <<  "\t"
+        << this->getDepartment()<< endl;
 }

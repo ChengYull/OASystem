@@ -25,3 +25,7 @@ void Admin::display() {
         << this->username << '\t'
         << this->getPermission() << endl;
 }
+
+string Admin::getDepartment() {
+    return "";
+}

@@ -159,12 +159,30 @@ void UserUtils::showUserTable() {
     if(bufferUserList.size() > 0) {
         cout << "id" << "\t"
             << "用户名" << "\t"
-            << "权限" << "\t"
+            << "权限" << "\t\t"
             << "部门" << endl;
         for(User* user:bufferUserList) {
             user->display();
         }
     }
+}
+
+bool UserUtils::ifIdExist(int id) {
+    for(User* user:bufferUserList) {
+        if(id == user->id) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool UserUtils::ifUsernameExist(string username) {
+    for(User* user:bufferUserList) {
+        if(username == user->username) {
+            return true;
+        }
+    }
+    return false;
 }
 
 

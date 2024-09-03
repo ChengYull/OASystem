@@ -72,14 +72,18 @@ bool BookingInfoUtils::addBookingInfo(BookingInfo *booking_info) {
     return saveBookingInfoToFile(booking_info);
 }
 
-bool BookingInfoUtils::deleteBookingInfo(int bookingId) {
+int BookingInfoUtils::deleteBookingInfo(int bookingId) {
+    int room_id = -1;
     for(auto it = bookingInfoList.begin();it != bookingInfoList.end();++it) {
         if(bookingId == (*it)->bookingId) {
+            room_id = (*it)->meetingRoomId;
             bookingInfoList.erase(it);
             break;
         }
     }
-    return updateBookingInfoFile();
+    if(!updateBookingInfoFile())
+        return -1;
+    return room_id;
 }
 
 void BookingInfoUtils::showBookingInfoTable(std::vector<BookingInfo *> list) {
@@ -87,4 +91,24 @@ void BookingInfoUtils::showBookingInfoTable(std::vector<BookingInfo *> list) {
     for(BookingInfo* info:list) {
         info->dispaly();
     }
+}
+
+void BookingInfoUtils::resetBookingInfo() {
+    bookingInfoList.clear();
+    updateBookingInfoFile();
+}
+
+BookingInfo* BookingInfoUtils::createBookingInfo(int meetingRoomId, std::string username, std::string dpt) {
+    int id = bookingInfoList.size();
+    return new BookingInfo(id,meetingRoomId,username,dpt);
+}
+
+std::vector<BookingInfo *> BookingInfoUtils::getBookingInfoListByUsername(std::string username) {
+    std::vector<BookingInfo *> list;
+    for(BookingInfo* info:bookingInfoList) {
+        if(username == info->username) {
+            list.push_back(info);
+        }
+    }
+    return list;
 }

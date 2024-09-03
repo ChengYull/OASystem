@@ -24,6 +24,16 @@ class UserFactory:public AbstractFactory {
                                             int permission,int dptId) override {
         return new Admin(id,username,password,permission,dptId);
     }
+    User* createUser(int id,string username,string password,
+                                    int permission,int dptId) override {
+        if(permission == 0) {
+            return new CommonUser(id,username,password,permission,dptId);
+        }
+        if(permission == 1) {
+            return new Admin(id,username,password,permission,dptId);
+        }
+        return nullptr;
+    }
 
 
 };

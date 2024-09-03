@@ -93,3 +93,45 @@ bool MeetingRoomUtils::deleteMeetingRoomById(int id) {
     ofs.close();
     return find;
 }
+
+bool MeetingRoomUtils::ifIdExist(int id) {
+    for(MeetingRoom* room:meetingRoomList) {
+        if(id == room->id) {
+            return true;
+        }
+    }
+    return false;
+}
+
+void MeetingRoomUtils::resetBooking() {
+    for(MeetingRoom* room:meetingRoomList) {
+        if(2 == room->status) {
+            room->status = 1;
+        }
+    }
+}
+
+std::vector<MeetingRoom *>::iterator MeetingRoomUtils::getById(int id) {
+    for(auto it = meetingRoomList.begin();it != meetingRoomList.end();++it) {
+        if(id == (*it)->id) {
+            return it;
+        }
+    }
+    return meetingRoomList.end();
+}
+
+bool MeetingRoomUtils::updateMeetingRoomFiel() {
+    std::ofstream ofs(MEETING_ROOM_INFO_PATH,std::ios::out);
+    if(!ofs.is_open()) {
+        std::cout << "文件打开失败" << std::endl;
+        return false;
+    }
+    for(MeetingRoom *meetingRoom:meetingRoomList) {
+        ofs << meetingRoom->id << " "
+            << meetingRoom->size << " "
+            << meetingRoom->status << std::endl;
+    }
+    ofs.close();
+    return true;
+}
+

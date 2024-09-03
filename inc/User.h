@@ -21,6 +21,7 @@ public:
     bool login(string password);
     virtual string getPermission() = 0;
     virtual void display() = 0;
+    virtual string getDepartment() = 0;
 };
 
 

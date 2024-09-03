@@ -26,6 +26,8 @@ public:
     bool deleteUserByUsername(string username);
     User* login(string username,string password);
     void showUserTable();
+    bool ifIdExist(int id);
+    bool ifUsernameExist(string username);
 };
 
 

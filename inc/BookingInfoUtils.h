@@ -18,9 +18,12 @@ public:
     bool saveBookingInfoToFile(BookingInfo *booking_info);
     std::vector<BookingInfo*> readBookInfoToList();
     bool addBookingInfo(BookingInfo *booking_info);
-    bool deleteBookingInfo(int bookingId);
+    int deleteBookingInfo(int bookingId);
     bool updateBookingInfoFile();
     void showBookingInfoTable(std::vector<BookingInfo*> list);
+    void resetBookingInfo();
+    BookingInfo* createBookingInfo(int meetingRoomId, std::string username, std::string dpt);
+    std::vector<BookingInfo*> getBookingInfoListByUsername(std::string username);
 };
 
 

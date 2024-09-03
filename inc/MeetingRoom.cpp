@@ -9,6 +9,7 @@
 MeetingRoom::MeetingRoom(int id, int size, int status):
         id(id),size(size),status(status){}
 
+
 std::string MeetingRoom::getStatus() {
         switch (status) {
                 case 0:
@@ -16,7 +17,7 @@ std::string MeetingRoom::getStatus() {
                 case 1:
                         return "可用";
                 case 2:
-                        return "已被占用";
+                        return "已被预定";
                 default:
                         return "状态未知";
         }

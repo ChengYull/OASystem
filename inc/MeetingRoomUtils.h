@@ -20,6 +20,10 @@ public:
     bool addMeetingRoom(MeetingRoom *meetingRoom);
     void showMeetingRoomTable();
     bool deleteMeetingRoomById(int id);
+    bool ifIdExist(int id);
+    void resetBooking();
+    std::vector<MeetingRoom*>::iterator getById(int id);
+    bool updateMeetingRoomFiel();
 };
 
 

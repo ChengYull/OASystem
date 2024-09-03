@@ -9,14 +9,8 @@ using namespace std;
 
 int main()
 {
-    //OASystemUI *OAUI = new OASystemUI();
-    //OAUI->displayMainPage();
-
-    BookingInfoUtils *utils = new BookingInfoUtils();
-    BookingInfo *info = new BookingInfo(90,702,"user3","材料部");
-    //utils->addBookingInfo(info);
-    utils->deleteBookingInfo(93);
-    utils->showBookingInfoTable(utils->bookingInfoList);
+    OASystemUI *OAUI = new OASystemUI();
+    OAUI->displayMainPage();
 
     return EXIT_SUCCESS;
 }
